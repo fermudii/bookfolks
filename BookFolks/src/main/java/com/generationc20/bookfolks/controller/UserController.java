@@ -41,6 +41,11 @@ public class UserController {
 		return "main";
 	}
 	
+	@GetMapping("/aboutUs")
+	public String loadAboutUsView(Model model) {
+		return "About_us";
+	}
+	
 	@GetMapping("/signupForm")
 	public String loadSignupFormView(Model model) {
 		return "signupForm";

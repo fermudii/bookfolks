@@ -18,8 +18,8 @@
     <link rel="stylesheet" th:href="@{/css/style_index.css}" />
     <!--FontAwesome-->
     <script
-      src="https://kit.fontawesome.com/0c6fb46b23.js"
-      crossorigin="anonymous"
+      th:src="@{https://kit.fontawesome.com/0c6fb46b23.js}"
+      th:crossorigin="anonymous"
     ></script>
     <meta charset="utf-8" />
     <title>BookFolks</title>
@@ -35,14 +35,14 @@
             /></a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/About_Us.html}">About</a></li>
+            <li class="active"><a href="/user/aboutUs">About</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a th:href="@{/signupForm.html}"><i class="fas fa-user-plus"></i> Sign up</a>
+              <a href="/user/signupForm"><i class="fas fa-user-plus"></i> Sign up</a>
             </li>
             <li>
-              <a th:href="@{/loginForm.html}"
+              <a href="/user/loginForm"
                 ><i class="fas fa-sign-in-alt"></i> Log in</a
               >
             </li>
