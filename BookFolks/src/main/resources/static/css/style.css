@@ -1,0 +1,176 @@
+nav {
+  position: fixed;
+  font-family: Georgia;
+  background-color: #322f38;
+  max-width: 100%;
+  max-height: 100%;
+}
+body {
+  position: relative;
+  font-family: "Karla", sans-serif;
+  background-color: #ffe9ca;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.searchContainer {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 300px;
+  transform: translate(50%, 30%);
+}
+
+.searchIcon {
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 5px;
+  background-color: white;
+}
+
+.searchBox {
+  border: 0;
+  padding-left: 30px;
+  flex: 1;
+}
+.searchButton {
+  background: #faab44;
+  border: 0;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 0;
+}
+.fa-plus-circle {
+  color: #faab44;
+}
+.userPicture {
+  width: 20px;
+  height: auto;
+  transform: translate(0, -10%);
+}
+h1 {
+  padding-top: 50px;
+  font-family: Georgia;
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}
+.title {
+  font-size: 18px;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+h3 {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.teamDescription {
+  position: relative;
+  margin-top: 100px;
+  background-color: #9f9164;
+  width: 100%;
+  height: 200px;
+}
+.teamMemberColumn {
+  float: left;
+  width: 20%;
+  padding: 15px;
+}
+.lia {
+  position: absolute;
+  bottom: 90px;
+  width: 150px;
+}
+.fer {
+  position: absolute;
+  bottom: 90px;
+  width: 150px;
+}
+.orli {
+  position: absolute;
+  bottom: 90px;
+  width: 150px;
+}
+.kevin {
+  position: absolute;
+  bottom: 90px;
+  width: 150px;
+}
+.saul {
+  position: absolute;
+  bottom: 90px;
+  width: 150px;
+}
+.name {
+  margin: 5px;
+  font-weight: bold;
+  position: absolute;
+  font-size: 18px;
+  color: white;
+  top: 120px;
+}
+.description {
+  display: inline-block;
+  text-align: center;
+  position: absolute;
+  font-size: 14px;
+  color: #d6d6d6;
+  top: 160px;
+}
+
+.iconRow {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+}
+.instagram_icon {
+  position: absolute;
+  left: 40%;
+  max-width: 50px;
+  max-height: 50px;
+}
+.facebook_icon {
+  position: absolute;
+  left: 48%;
+  max-width: 50px;
+  max-height: 50px;
+}
+.twitter_icon {
+  position: absolute;
+  left: 56%;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.form-control{
+border-radius: 20px;
+border-color: blue;
+}
+
+.btn-outline-secondary{
+	border-radius: 20px;
+	border-color: blue;
+	background: #faab44;
+	 border: 0; 
+	 color: black; 
+	 
+.fondo{
+	background: url(http://localhost:8080/img/patron.png);
+	background-repeat:(http://localhost:8080/img/patron.png);	
+}
+
+.imgredonda{
+	border-radius: 22px;
+}
+
+.backgroundlia{
+background-color: #FFE9CA;
+border-color: #FFE9CA;
+}
+.white{
+	color: white;
+}

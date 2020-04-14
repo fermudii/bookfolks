@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>BookFolks</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
+</head>
+<body>
+	<div>
+		<h1>Edit Profile</h1>
+	</div>
+	<form action="/user/edit" method="POST">
+		<div>
+			<label for="txtName">Name</label>
+			<input type="text" id="txtName" name="txtName" th:placeholder="${user.name}">
+		</div>
+		<div>
+			<label for="txtLastName">Last Name</label>
+			<input type="text" id="txtLastName" name="txtLastName" th:placeholder="${user.lastName}">
+		</div>
+		<div>
+			<label for="txtAge">Age</label>
+			<input type="text" id="txtAge" name="txtAge" th:placeholder="${user.age}">
+		</div>
+		<div>
+			<label for="txtGender">Gender</label>
+			<input type="text" id="txtGender" name="txtGender" th:placeholder="${user.gender}">
+		</div>
+		<div>
+			<label for="txtDescription">Description</label>
+			<textarea id="txtDescription" name="txtDescription" th:placeholder="${user.description}"></textarea>
+		</div>
+		<div>
+			<label for="txtEmail">Email</label>
+			<input type="text" id="txtEmail" name="txtEmail" th:placeholder="${user.email}">
+		</div>
+		<div>
+			<label for="txtUrlImage">Profile Image</label>
+			<input type="text" id="txtUrlImage" name="txtUrlImage"><button>Search</button>
+		</div>
+		<input type="submit" value="Accept">
+	</form>
+</body>
+</html>
