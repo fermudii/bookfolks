@@ -20,26 +20,30 @@ public class Chapter {
 	private int id_continuity;
 	private String title;
 	private String content;
+	private String author;
+	private String storyTitle;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationDateTime;
 	
 	//Foreign Keys
 	private int id_user;
 	private int id_story;
-	private int id_image;
+	private String urlImage;
 	
 	public Chapter() {}
 
-	public Chapter(Integer id, int id_continuity, String title, String content, int id_user, int id_story,
-			int id_image, Date creationDateTime) {
+	public Chapter(Integer id, int id_continuity, String title, String content,String author, String storyTitle, int id_user, int id_story,
+			String urlImage, Date creationDateTime) {
 		super();
 		this.id = id;
 		this.id_continuity = id_continuity;
 		this.title = title;
 		this.content = content;
+		this.author = author;
+		this.storyTitle = storyTitle;
 		this.id_user = id_user;
 		this.id_story = id_story;
-		this.id_image = id_image;
+		this.urlImage = urlImage;
 		this.creationDateTime = creationDateTime;
 	}
 
@@ -74,7 +78,23 @@ public class Chapter {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	public String getAuthor() {
+		return author;
+	}
 
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	
+	public String getStoryTitle() {
+		return storyTitle;
+	}
+	
+	public void setStoryTitle(String storyTitle) {
+		this.storyTitle = storyTitle;
+	}
+	
 	public int getId_user() {
 		return id_user;
 	}
@@ -91,12 +111,12 @@ public class Chapter {
 		this.id_story = id_story;
 	}
 
-	public int getId_image() {
-		return id_image;
+	public String getUrlImage() {
+		return urlImage;
 	}
 
-	public void setId_image(int id_image) {
-		this.id_image = id_image;
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
 	}
 	
 	public Date getCreacionDateTime() {

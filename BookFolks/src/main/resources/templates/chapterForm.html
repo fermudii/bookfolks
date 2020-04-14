@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>BookFolks</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
+</head>
+<body>
+	<div>
+		<h1>New Chapter</h1>
+	</div>
+	<form  action="/chapter/createChapter" method="POST">
+		<div>
+			<input type="text" id="txtIdStory" name="txtIdStory" th:value="${story.id}" style="display:none;">
+			<input type="text" id="txtIdContinuity" th:if="${flag == 1}" name="txtIdContinuity" value="0" style="display:none;">	
+			<input type="text" id="txtIdContinuity" th:if="${flag == 0}" name="txtIdContinuity" th:value="${chapter.id}" style="display:none;">					
+			<label for="txtTitle">Title</label>
+			<input type="text" id="txtTitle" name="txtTitle">
+		</div>
+		<div th:if="${story.idGenre == 1}" >
+			<label for="txtContent">Content</label>
+			<textarea maxlength="1000" id="txtContent" name="txtContent"></textarea>
+		</div>
+		<div th:if="${story.idGenre == 2}">
+			<label for="txtContent">Content</label>
+			<textarea id="txtContent" name="txtContent"></textarea>
+		</div>
+		<div th:if="${story.idGenre == 3}">
+			<label for="txtContent">Content</label>
+			<textarea maxlength="260" id="txtContent" name="txtContent"></textarea>
+		</div>
+		<div>
+			<label for="txtUrlImage">Image</label>
+			<input type="text" id="txtUrlImage" name="txtUrlImage">
+		</div>
+		<input type="submit" value="Accept">
+	</form>
+</body>
+</html>

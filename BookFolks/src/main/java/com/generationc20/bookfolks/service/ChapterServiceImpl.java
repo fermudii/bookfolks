@@ -1,5 +1,6 @@
 package com.generationc20.bookfolks.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ public class ChapterServiceImpl implements ChapterService {
 	@Override
 	public Chapter save(Chapter chapter) {
 		return repository.save(chapter);
+	}
+	
+	@Override
+	public List<Chapter> getAll() {
+		return repository.findAll();
 	}
 	
 	@Override

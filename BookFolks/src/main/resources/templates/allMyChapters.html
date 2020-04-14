@@ -5,19 +5,16 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
 </head>
 <body>
-	<h2>My Stories</h2>
+	<h2>My Collaborations</h2>
 	<div>
-		<a href="/story/new">Create a new Story</a>
+		<a href="/user/main">Make a new collaborations!</a>
 	</div>
-	<div th:if="${myStories}" th:each="myStory: ${myStories}">
-		<img th:src="${myStory.urlImage}" width="30px" height="30px">
-		<h4 th:text="${myStory.title}"></h4>
-		<h5 th:text="${myStory.synopsis}"></h5>
-		<h6 th:if="${myStory.idGenre == 1}">Tale</h6>
-		<h6 th:if="${myStory.idGenre == 2}">Novel</h6>
-		<h6 th:if="${myStory.idGenre == 3}">Minifiction</h6>
-		<a th:href="@{/story/showStory(id=${myStory.id})}">View</a>
-		<a th:href="@{/story/deleteStory(id=${myStory.id})}">Delete Story</a>
+	<div th:if="${myChapters}" th:each="myChapter: ${myChapters}">
+		<img th:src="${myChapter.urlImage}" width="30px" height="30px">
+		<h4 th:text="${myChapter.title}"></h4>
+		<h5 th:text="${myChapter.content}"></h5>
+		<h6 th:text="${myChapter.storyTitle}"></h6>
+		<a th:href="@{/chapter/showChapter(id=${myChapter.id})}">View</a>
 	</div>
 	
 		<div id="alert" class="alert alert-success" role="alert" th:if="${success}" th:text="${success}"></div>

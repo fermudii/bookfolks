@@ -1,6 +1,7 @@
 package com.generationc20.bookfolks.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.generationc20.bookfolks.model.Chapter;
 import com.generationc20.bookfolks.model.Story;
 import com.generationc20.bookfolks.model.User;
+import com.generationc20.bookfolks.service.ChapterService;
 import com.generationc20.bookfolks.service.StoryService;
 import com.generationc20.bookfolks.service.UserService;
 
@@ -28,6 +31,9 @@ public class StoryController {
 	
 	@Autowired
 	StoryService service; 
+	
+	@Autowired
+	ChapterService cService;
 	
 	@GetMapping("/new")
 	public String loadNewStoryView(@SessionAttribute("user")User user, Model model) {
@@ -60,7 +66,7 @@ public class StoryController {
 		
 		service.save(story);
 		redirectAttributes.addFlashAttribute("success","Your story was created");
-	return "redirect:/user/main";
+	return "redirect:/story/all";
 	}
 	
 	@GetMapping("/all")
@@ -75,7 +81,7 @@ public class StoryController {
 				myStories.add(storyDB);
 			}
 		}
-		System.out.println(myStories.isEmpty());
+		Collections.reverse(myStories);
 			if(myStories.isEmpty()) {
 				model.addAttribute("error","You don't have any stories yet!");
 				return"/allMyStories";
@@ -86,9 +92,27 @@ public class StoryController {
 	}
 	
 	@GetMapping("/showStory")
-	public String getStory(@RequestParam("id") Integer id, @SessionAttribute("user")User user,Model model) {
+	public String getStory(@RequestParam("id") Integer id, @SessionAttribute("user")User user,Model model,
+			RedirectAttributes redirectAttributes) {
 	
-		model.addAttribute("story",service.getById(id).get());
+		Chapter myChapter = new Chapter();;
+		List<Chapter> allChapters = cService.getAll();
+		
+		Story currentStory = service.getById(id).get();
+		
+		for(Chapter chapterDB : allChapters) {
+			if(currentStory.getId() == chapterDB.getId_story()) {
+				myChapter = (chapterDB);
+				model.addAttribute("chapter", myChapter);
+				model.addAttribute("story",currentStory);
+				model.addAttribute("user", uService.getById(user.getId()).get());
+				return "/story";
+			}
+		}
+		
+		model.addAttribute("story",currentStory);
+		model.addAttribute("user", uService.getById(user.getId()).get());
+		model.addAttribute("noChapter","First Chapter doesn't exist");
 		return "/story";
 	}
 	

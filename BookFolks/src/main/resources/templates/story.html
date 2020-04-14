@@ -16,10 +16,22 @@
 		<p th:text="${story.author}"></p>
 	</div>
 	<div>
-		<a href="/chapter/new">Create a new Chapter</a>
+		<a th:if="${story.idUser == user.id} and ${noChapter}"th:href="@{/chapter/new(id=${story.id},flag=1)}">Create your First Chapter</a>
 	</div>
-		<div id="alert" class="alert alert-primary" role="alert" th:if="${error}" th:text="${error}"></div>
-	<script th:if="${error}">
+	
+	<div th:if="${chapter}">
+	<h3>Chapter</h3>
+		<img th:src="${chapter.urlImage}" width="30px" height="30px">
+		<h4 th:text="${chapter.title}"></h4>
+		<h5 th:text="${chapter.content}"></h5>
+		<h6 th:text="${chapter.author}"></h6>
+		<a th:href="@{/chapter/showChapter(id=${chapter.id})}">View</a>
+	</div>
+	
+	
+	
+		<div id="alert" class="alert alert-primary" role="alert" th:if="${success}" th:text="${success}"></div>
+	<script th:if="${success}">
 						setTimeout(function(){
 							document.getElementById("alert").remove();
 						}, 5000);
