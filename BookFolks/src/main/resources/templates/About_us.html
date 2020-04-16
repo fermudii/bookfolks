@@ -4,20 +4,20 @@
     <!-- Latest compiled and minified CSS -->
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css}"
     />
 
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
 
     <!--CSS File-->
-    <link rel="stylesheet" href="css/style_AboutUs.css" />
+    <link rel="stylesheet" th:href="@{/css/style_AboutUs.css}" />
     <!--FontAwesome-->
     <script
-      src="https://kit.fontawesome.com/0c6fb46b23.js"
+      th:src="@{https://kit.fontawesome.com/0c6fb46b23.js}"
       crossorigin="anonymous"
     ></script>
 
@@ -30,14 +30,13 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"
-            ><img class="BookFolkIcon" src="img/BookFolk_icon_white.svg"
+          <a class="navbar-brand" href="/user/index"
+            ><img class="BookFolkIcon" th:src="@{/img/BookFolk_icon_white.svg}"
           /></a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="/user/index">Home</a></li>
           <li><a href="#">Genres</a></li>
-          <li><a href="#">About</a></li>
         </ul>
         <form class="navbar-form navbar-left" action="/action_page.php">
           <div class="input-group">
@@ -55,7 +54,7 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#"><i class="fas fa-plus-circle fa-lg"></i> New Story</a>
+            <a href=""><i class="fas fa-plus-circle fa-lg"></i> New Story</a>
           </li>
           <li>
             <a href="#"
@@ -85,7 +84,7 @@
         <div class="teamMemberColumn">
           <div class="name">Lia Figueroa</div>
           <div class="occupation">Communications</div>
-          <img class="lia" src="img/lia@2x.png" />
+          <img class="lia" th:src="@{/img/lia@2x.png}" />
         </div>
         <div class="teamMemberColumn">
           <div class="name">Fernando González</div>
@@ -93,7 +92,7 @@
             Electronics &<br />
             Instrumentation Engineer
           </div>
-          <img class="fer" src="img/fer@2x.png" />
+          <img class="fer" th:src="@{/img/fer@2x.png}" />
         </div>
         <div class="teamMemberColumn">
           <div class="name">Orlando Alvarado</div>
@@ -101,7 +100,7 @@
             Electronics<br />
             Engineer
           </div>
-          <img class="orli" src="img/orli@2x.png" />
+          <img class="orli" th:src="@{/img/orli@2x.png}" />
         </div>
         <div class="teamMemberColumn">
           <div class="name">Kevin Winkler</div>
@@ -109,7 +108,7 @@
             Mechatronics<br />
             Engineer
           </div>
-          <img class="kevin" src="img/kevin@2x.png" />
+          <img class="kevin" th:src="@{/img/kevin@2x.png}" />
         </div>
         <div class="teamMemberColumn">
           <div class="name">Saúl Valenzuela</div>
@@ -117,7 +116,7 @@
             Computer Systems<br />
             Engineer
           </div>
-          <img class="saul" src="img/saul3@2x.png" />
+          <img class="saul" th:src="@{/img/saul3@2x.png}" />
         </div>
       </div>
     </div>
@@ -125,9 +124,9 @@
     <div class="followUs">
       <h3>Follow us</h3>
       <div class="iconRow">
-        <img class="instagram_icon" src="img/instagram_icon.svg" />
-        <img class="facebook_icon" src="img/facebook_icon.svg" />
-        <img class="twitter_icon" src="img/twitter_icon.svg" />
+        <img class="instagram_icon" th:src="@{/img/instagram_icon.svg}" />
+        <img class="facebook_icon" th:src="@{/img/facebook_icon.svg}" />
+        <img class="twitter_icon" th:src="@{/img/twitter_icon.svg}" />
       </div>
     </div>
   </body>

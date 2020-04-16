@@ -28,6 +28,11 @@ public class UserController {
 	@Autowired
 	private StoryService sService;
 	
+	@GetMapping("/index")
+	public String loadIndexView(Model model) {
+		return "index";
+	}
+	
 	@GetMapping("/main")
 	public String loadMainPageView(@SessionAttribute("user") User user,Model model) {
 		
