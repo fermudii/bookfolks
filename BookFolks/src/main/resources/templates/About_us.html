@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!--CSS File-->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style_AboutUs.css" />
     <!--FontAwesome-->
     <script
       src="https://kit.fontawesome.com/0c6fb46b23.js"
@@ -30,37 +30,36 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"> BookFolks</a>
+          <a class="navbar-brand" href="#"
+            ><img class="BookFolkIcon" src="img/BookFolk_icon_white.svg"
+          /></a>
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Genres</a></li>
-          <li><a href="About_us.html">About us</a></li>
-          <!--Search bar-->
-          <li>
-            <span class="searchContainer">
-              <i class="fa fa-search searchIcon"></i>
-              <input
-                class="searchBox"
-                type="search"
-                name="search"
-                placeholder="Search a history or author..."
-              />
-              <input type="submit" value="Search" class="searchButton" />
-            </span>
-          </li>
-          <!--END of search bar-->
+          <li><a href="#">About</a></li>
         </ul>
+        <form class="navbar-form navbar-left" action="/action_page.php">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Looking for something?"
+            />
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#"><span class="fas fa-plus-circle"></span> New Story</a>
+            <a href="#"><i class="fas fa-plus-circle fa-lg"></i> New Story</a>
           </li>
           <li>
             <a href="#"
-              ><span>
-                <img class="userPicture" src="img/user.png" />
-              </span>
-              Profile</a
+              ><img class="userPicture" src="img/user.png" />Profile</a
             >
           </li>
         </ul>
@@ -68,29 +67,29 @@
     </nav>
     <!--END of Nav bar-->
     <div>
-      <h1>Meet the Team</h1>
+      <h1 class="title">Meet the Team</h1>
     </div>
     <!--Images section-->
     <div class="teamRow"></div>
     <!--Description part-->
     <div>
-      <div class="title">
+      <div class="description">
         We're a group of friends with different backgrounds that came up with
         the idea of letting artists like you join other talented people, in this
-        case, writers and illustrators, allowing you to collaborate and create
-        marvelous stories!
+        case, writers and illustrators,
+        <br />allowing you to collaborate and create marvelous stories!
       </div>
     </div>
     <div class="teamDescription">
       <div class="teamMemberRow">
         <div class="teamMemberColumn">
           <div class="name">Lia Figueroa</div>
-          <div class="description">Communications</div>
+          <div class="occupation">Communications</div>
           <img class="lia" src="img/lia@2x.png" />
         </div>
         <div class="teamMemberColumn">
           <div class="name">Fernando González</div>
-          <div class="description">
+          <div class="occupation">
             Electronics &<br />
             Instrumentation Engineer
           </div>
@@ -98,7 +97,7 @@
         </div>
         <div class="teamMemberColumn">
           <div class="name">Orlando Alvarado</div>
-          <div class="description">
+          <div class="occupation">
             Electronics<br />
             Engineer
           </div>
@@ -106,7 +105,7 @@
         </div>
         <div class="teamMemberColumn">
           <div class="name">Kevin Winkler</div>
-          <div class="description">
+          <div class="occupation">
             Mechatronics<br />
             Engineer
           </div>
@@ -114,7 +113,7 @@
         </div>
         <div class="teamMemberColumn">
           <div class="name">Saúl Valenzuela</div>
-          <div class="description">
+          <div class="occupation">
             Computer Systems<br />
             Engineer
           </div>
