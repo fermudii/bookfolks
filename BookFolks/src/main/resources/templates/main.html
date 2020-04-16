@@ -3,6 +3,8 @@
 <head>
 <title>BookFolks</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/storyformstyles.css}">
+	<script th:src="@{https://kit.fontawesome.com/946aaf3d98.js}" crossorigin="anonymous"></script>
 </head>
 <body>
 	<h1>This is the main page</h1>
@@ -14,8 +16,71 @@
 	<a href="/user/profile">View Profile</a>
 	<a th:href="@{/logout}" th:object="${user}">LogOut</a>
 	<div>
-		<a href="/story/new">Create a new Story</a>
-	</div>
+		<!-- Button trigger modal -->
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalScrollable">
+ 			 Create new story
+			</button>	
+			</div>
+
+	<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title titulo" id="exampleModalScrollableTitle"><strong>Create your new story!</strong></h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="formulario" action="/story/createStory" method="POST">
+        
+	<div class="contenedor">
+
+		<div class="input-contenedor">
+		<i class="fas fa-heading icon"></i>
+			<input type="text" placeholder="Title" id="txtTitle" name="txtTitle">
+			
+		</div>
+
+		<div class="input-contenedor">
+		<i class="fas fa-pencil-alt icon"></i>
+			<input type="text" placeholder="Synopsis"  id="txtSynopsis" name="txtSynopsis">
+			
+		</div>
+
+			<label>Genre</label>
+			<select class="select-css" id="txtGenre" name="txtGenre">
+				<option value="1">Tale</option>
+				<option value="2">Novel</option>
+				<option value="3">Minifiction</option>
+			</select>
+			
+			
+			<div class="input-contenedor">
+			<i class="fas fa-images icon"></i>
+				<input type="text" placeholder="Upload Image"  id="txtUrlImage" name="txtUrlImage">
+			</div>
+			<div class="btn-group-toggle" data-toggle="buttons" align="right">
+  				<label class="btn btn-success btn-sm">
+    			<input type="checkbox" checked> Upload
+ 				 </label>
+				</div>
+
+	</div>	
+	<br>
+ 		<button type="submit" class="btn btn-dark btn-sm btn-block">Save</button>
+      </form>
+
+      </div>
+     
+    </div>
+  </div>
+</div>
+	
+	
+	
 	<div id="alert"class="alert alert-success" role="alert" th:if="${success}" th:text="${success}"></div>
 	<div th:if="${allStories}" th:each="story: ${allStories}">
 		<img th:src="${story.urlImage}" width="30px" height="30px">
@@ -34,5 +99,8 @@
 						}, 5000);
 	</script>
 	
+	<script th:src="@{https://code.jquery.com/jquery-3.4.1.slim.min.js}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script th:src= "@{/js/bootstrap.min.js}"></script>
 </body>
 </html>

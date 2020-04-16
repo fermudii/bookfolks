@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>BookFolks</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+	<script th:src="@{https://kit.fontawesome.com/946aaf3d98.js}" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<form class="formulario" th:action="@{/doLogin}" method="POST" th:object="${user}">
+	<h1>Log in</h1>
+	<div class="contenedor">
+
+
+		<div class="input-contenedor">
+			<i class="fas fa-user-alt icon"></i>
+			<input type="text" id="txtUserName" name="username" placeholder="Username">
+			
+		</div>
+
+		<div class="input-contenedor">
+			<i class="fas fa-key icon"></i>
+			<input type="password" placeholder="Password" id="txtPassword" name="password">
+			
+		</div>
+	</div>
+	<input type="submit" value="Log in" class="button">
+	<p>By registering, you accept our terms of use and privacy policy.
+	</p>
+	<p>You don't have an account? <a class="link" href="/user/signupForm">Sign up</a> </p>
+</form>
+<div id="alert"class="alert alert-danger" role="alert" th:if="${errorPassword}" th:text="${errorPassword}"></div>
+	<div id="alert"class="alert alert-warning" role="alert" th:if="${errorUsername}" th:text="${errorUsername}"></div>
+	<script th:if="${errorPassword}">
+						setTimeout(function(){
+							document.getElementById("alert").remove();
+						}, 2000);
+	</script>
+	<script th:if="${errorUsername}">
+						setTimeout(function(){
+							document.getElementById("alert").remove();
+						}, 2000);
+	</script>
+
+<script th:src="@{https://code.jquery.com/jquery-3.4.1.slim.min.js}" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

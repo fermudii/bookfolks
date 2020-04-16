@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Bookfolks</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
+</head>
+<body>
+	<h2>My Stories</h2>
+	<div th:if="${myStories}" th:each="myStory: ${myStories}">
+		<img th:src="${myStory.urlImage}" width="30px" height="30px">
+		<h4 th:text="${myStory.title}"></h4>
+		<h5 th:text="${myStory.synopsis}"></h5>
+		<h6 th:if="${myStory.idGenre == 1}">Tale</h6>
+		<h6 th:if="${myStory.idGenre == 2}">Novel</h6>
+		<h6 th:if="${myStory.idGenre == 3}">Minifiction</h6>
+		<a th:href="@{/story/showStory(id=${myStory.id})}">View</a>
+		<a th:href="@{/story/deleteStory(id=${myStory.id})}">Delete Story</a>
+	</div>
+	<div>
+		<a href="/story/new">Create a new Story</a>
+	</div>
+		<div id="alert" class="alert alert-primary" role="alert" th:if="${error}" th:text="${error}"></div>
+	<script th:if="${error}">
+						setTimeout(function(){
+							document.getElementById("alert").remove();
+						}, 5000);
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>BookFolks</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
+</head>
+<body>
+	<h2 th:text="'Delete Story ' + ${story.title}"></h2>
+	<h4>Authorization</h4>
+	<form th:action="@{/story/removeStory}" method="GET">
+		<div>
+			<input type="text" id="id" name="id" th:value="${story.id}" style="display:none;">
+			<label for="txtUsername">Username</label>
+			<input type="text" id="txtUsername" name="txtUsername">
+		</div>
+		<div>
+			<label for="txtPassword">Password</label>
+			<input type="password" id="textPassword" name="txtPassword">
+		</div>
+		<input type="submit" value="OK">
+		<a href="/user/profile">Cancel</a>
+	</form>
+	<div id="alert"class="alert alert-warning" role="alert" th:if="${error}" th:text="${error}"></div>
+	<script th:if="${error}">
+						setTimeout(function(){
+							document.getElementById("alert").remove();
+						}, 2000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Bookfolks</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/bootstrap.min.css}"></link>
+</head>
+<body>
+	<a href="/user/signupForm">Create new account</a>
+	<a href="/user/loginForm">Login</a>
+
+<div id="alert"class="alert alert-success" role="alert" th:if="${success}" th:text="${success}"></div>
+<div id="alert"class="alert alert-secondary" role="alert" th:if="${logout}" th:text="${logout}"></div>
+	
+	<script th:if="${success}">
+						setTimeout(function(){
+							document.getElementById("alert").remove();
+						}, 5000);
+	</script>
+	<script th:if="${logout}">
+						setTimeout(function(){
+							document.getElementById("alert").remove();
+						}, 5000);
+	</script>
+	</body>
+</html>
