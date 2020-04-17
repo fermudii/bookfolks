@@ -22,12 +22,63 @@
 		<h6 th:if="${myStory.idGenre == 2}">Novel</h6>
 		<h6 th:if="${myStory.idGenre == 3}">Minifiction</h6>
 		<a th:href="@{/story/showStory(id=${myStory.id})}">View</a>
-		<a th:href="@{/story/deleteStory(id=${myStory.id})}">Delete Story</a>
-	</div>
+		
+		<!-- Button modal delete story -->
+
+		<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModalScrollabledelete">
+ 			Delete Story
+			</button>
 	
+	<!-- modal delete story -->
+	<div class="modal fade" id="exampleModalScrollabledelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title titulo" id="exampleModalScrollableTitle">Delete your story..</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    
+    <form th:action="@{/story/removeStory}" method="GET">
+			<div class="contenedor">
+			 <input type="text" id="id" name="id" th:value="${myStory.id}" style="display:none;">
+        
+				<div align="center">
+				<h5>Authorization</h5>
+				</div>
+				<div class="input-contenedor">
+					<i class="fas fa-user-alt icon" ></i>
+					<input type="text"  id="txtUsername" name="txtUsername" placeholder="Username">
+			
+				</div>
+
+				<div class="input-contenedor">
+					<i class="fas fa-key icon"></i>
+					<input type= "password"   id="textPassword" name="txtPassword" placeholder="Password">
+			
+				</div>
+
+
+			</div>	
+		<br>
+		<div class="row">
+			<div class="col columna" align="center">
+ 				<button type="submit" class="btn btn-dark">Ok</button>
+ 				<a class="btn btn-link" href="/user/profile" role="button">Cancel</a>
+ 			</div>	
+ 		</div>
+ 	</form>
+   </div>
+     
+    </div>
+  </div>
+</div>
+</div>
+<!--termina modal-->
 	
-	
-	<!-- Modal -->
+	<!-- Modal crear nueva historia-->
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
@@ -39,10 +90,11 @@
       </div>
       <div class="modal-body">
 
-        <form class="formulario" action="/story/createStory" method="POST">
-        
+        <form class="formulario" th:action="@{/story/createStory}" method="POST">
+      
 	<div class="contenedor">
-
+	
+ 	
 		<div class="input-contenedor">
 		<i class="fas fa-heading icon"></i>
 			<input type="text" placeholder="Title" id="txtTitle" name="txtTitle">
@@ -84,6 +136,12 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
 	
 	
 	<!-- Inician Alertas -->

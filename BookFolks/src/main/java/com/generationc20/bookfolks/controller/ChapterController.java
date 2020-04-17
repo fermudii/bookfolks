@@ -34,28 +34,55 @@ public class ChapterController {
 	@Autowired
 	StoryService sService;
 	
-	@GetMapping("/new")
+	@PostMapping("/createChapter")
 	public String loadNewChapterView(@SessionAttribute("user") User user,
 			@RequestParam("id") Integer id,
-			@RequestParam("flag")int flag, Model model) {
+			@RequestParam("flag")int flag, Model model, @RequestParam("txtTitle") String title,
+			@RequestParam("txtContent") String content,
+			@RequestParam("txtIdStory") Integer idStory,
+			@RequestParam("txtUrlImage") String urlImage,
+			@RequestParam("txtIdContinuity") Integer idContinuity,
+			RedirectAttributes redirectAttributes) {
+				User userDB = uService.getById(user.getId()).get();
+				Story storyDB = sService.getById(idStory).get();
+				
+				//Model
+				Chapter chapter = new Chapter();
+				chapter.setTitle(title);
+				chapter.setContent(content);
+				chapter.setId_user(user.getId());
+				chapter.setUrlImage(urlImage);
+				chapter.setId_story(idStory);
+				chapter.setId_continuity(idContinuity);
+				chapter.setAuthor(userDB.getUsername());
+				chapter.setStoryTitle(storyDB.getTitle());
+
+				service.save(chapter);
+				redirectAttributes.addFlashAttribute("success","Your chapter was created");
+				
+				if(idContinuity == 0) {
+					model.addAttribute("user", uService.getById(user.getId()).get());
+					model.addAttribute("story", sService.getById(id).get());
+					model.addAttribute("flag", flag);
+					
+					redirectAttributes.addAttribute("id",idStory);
+					
+					return "redirect:/story/showStory";
+				} 
+				model.addAttribute("user", uService.getById(user.getId()).get());
+				model.addAttribute("chapter", service.getById(id).get());
+				model.addAttribute("story",sService.getById(service.getById(id).get().getId_story()).get());
+				model.addAttribute("flag", flag);
+				redirectAttributes.addAttribute("id",idContinuity);
+				
+				return "redirect:/chapter/showChapter";
 		
-		if(flag == 1) {
-			model.addAttribute("user", uService.getById(user.getId()).get());
-			model.addAttribute("story", sService.getById(id).get());
-			model.addAttribute("flag", flag);
-			return "/chapterForm";
-		}else {
-			
-			model.addAttribute("user", uService.getById(user.getId()).get());
-			model.addAttribute("chapter", service.getById(id).get());
-			model.addAttribute("story",sService.getById(service.getById(id).get().getId_story()).get());
-			model.addAttribute("flag", flag);
-			return "/chapterForm";
-		}
+		
+		
 		
 	}
 	
-	@PostMapping("/createChapter")
+	@PostMapping("/new")
 	public String createChapter(@SessionAttribute("user") User user,
 			@RequestParam("txtTitle") String title,
 			@RequestParam("txtContent") String content,
@@ -104,11 +131,13 @@ public class ChapterController {
 			}
 		}
 		if(chapters.isEmpty()) {
+			model.addAttribute("story",sService.getById(service.getById(id).get().getId_story()).get());
 			model.addAttribute("chapter",currentChapter);
 			model.addAttribute("user", uService.getById(user.getId()).get());
 			model.addAttribute("size",size);
 			return "/chapter";
 		}else {
+			model.addAttribute("story",sService.getById(service.getById(id).get().getId_story()).get());
 			model.addAttribute("chaptersChild", chapters);
 			model.addAttribute("chapter",currentChapter);
 			model.addAttribute("user", uService.getById(user.getId()).get());
