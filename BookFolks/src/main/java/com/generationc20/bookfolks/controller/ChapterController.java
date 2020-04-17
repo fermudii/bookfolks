@@ -41,7 +41,7 @@ public class ChapterController {
 			@RequestParam("flag")int flag, Model model, @RequestParam("txtTitle") String title,
 			@RequestParam("txtContent") String content,
 			@RequestParam("txtIdStory") Integer idStory,
-			@RequestParam("txtUrlImage") String urlImage,
+			@RequestParam("file") MultipartFile multipartFile,
 			@RequestParam("txtIdContinuity") Integer idContinuity,
 			RedirectAttributes redirectAttributes) {
 				User userDB = uService.getById(user.getId()).get();
@@ -52,13 +52,12 @@ public class ChapterController {
 				chapter.setTitle(title);
 				chapter.setContent(content);
 				chapter.setId_user(user.getId());
-				chapter.setUrlImage(urlImage);
 				chapter.setId_story(idStory);
 				chapter.setId_continuity(idContinuity);
 				chapter.setAuthor(userDB.getUsername());
 				chapter.setStoryTitle(storyDB.getTitle());
 
-				service.save(chapter);
+				service.save(chapter,multipartFile);
 				redirectAttributes.addFlashAttribute("success","Your chapter was created");
 				
 				if(idContinuity == 0) {
@@ -77,10 +76,7 @@ public class ChapterController {
 				redirectAttributes.addAttribute("id",idContinuity);
 				
 				return "redirect:/chapter/showChapter";
-		
-		
-		
-		
+	
 	}
 	
 	@PostMapping("/new")

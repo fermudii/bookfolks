@@ -90,7 +90,7 @@
       </div>
       <div class="modal-body">
 
-        <form class="formulario" th:action="@{/story/createStory}" method="POST">
+        <form class="formulario" th:action="@{/story/createStory}"  enctype="multipart/form-data" method="POST">
       
 	<div class="contenedor">
 	
@@ -118,7 +118,7 @@
 			
 			<div class="input-contenedor">
 			<i class="fas fa-images icon"></i>
-				<input type="text" placeholder="Upload Image"  id="txtUrlImage" name="txtUrlImage">
+				<input type="file" placeholder="Upload Image"  id="file" name="file">
 			</div>
 			<div class="btn-group-toggle" data-toggle="buttons" align="right">
   				<label class="btn btn-success btn-sm">
