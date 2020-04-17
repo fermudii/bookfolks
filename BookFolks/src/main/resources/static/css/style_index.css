@@ -102,6 +102,7 @@ body {
   width: 100%;
   height: 50px;
   background-color: #322f38;
+  margin-top: 320px;
 }
 .bottom div {
   width: 15%;
@@ -129,7 +130,16 @@ body {
 }
 .textMain {
   position: absolute;
-  height: 700px;
+  width: 100%;
+}
+#getStarted {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  width: 150px;
+  height: 70px;
+  margin-top: 250px;
+  border-radius: 50px;
 }
 .fa-user-plus {
   padding: 5px;
