@@ -52,7 +52,8 @@ public class StoryController {
 	public String createStory(@SessionAttribute("user")User user,
 			@RequestParam("txtTitle") String title,
 			@RequestParam("txtSynopsis") String synopsis,
-			@RequestParam("file") MultipartFile multipartFile,
+			@RequestParam("txtUrlImage") String urlImage,
+			/*@RequestParam("file") MultipartFile multipartFile,*/
 			@RequestParam("txtGenre") int genre, RedirectAttributes redirectAttributes) {
 		
 		User userDB = uService.getById(user.getId()).get();
@@ -61,10 +62,11 @@ public class StoryController {
 		story.setTitle(title);
 		story.setSynopsis(synopsis);
 		story.setIdGenre(genre);
+		story.setUrlImage(urlImage);
 		story.setIdUser(user.getId());
 		story.setAuthor(userDB.getUsername());
 		
-		service.save(story,multipartFile);
+		service.save(story/*,multipartFile*/);
 		redirectAttributes.addFlashAttribute("success","Your story was created");
 	return "redirect:/story/all";
 	}

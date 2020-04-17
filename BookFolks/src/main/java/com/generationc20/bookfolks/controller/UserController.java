@@ -122,7 +122,8 @@ public class UserController {
 			@RequestParam("txtGender") String gender,
 			@RequestParam("txtDescription") String description,
 			@RequestParam("txtEmail") String email,
-			@RequestParam("file") MultipartFile multipartFile,
+			@RequestParam("txtUrlImage") String urlImage,
+			/*@RequestParam("file") MultipartFile multipartFile,*/
 			RedirectAttributes redirectAttributes) {
 		
 		//Model
@@ -158,9 +159,14 @@ public class UserController {
 		}else {
 			userEdited.setEmail(userDB.getEmail());
 		}
+		if(urlImage != null && urlImage.length() > 0) {
+			userEdited.setUrlImage(urlImage);
+		}else {
+			userEdited.setUrlImage(userDB.getUrlImage());
+		}
 		
 		
-		service.update(user.getId(),userEdited,multipartFile);
+		service.update(user.getId(),userEdited/*,multipartFile*/);
 		redirectAttributes.addFlashAttribute("success","Your profile was updated");
 		return "redirect:/user/profile";
 	}

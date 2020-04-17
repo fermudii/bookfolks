@@ -17,18 +17,18 @@ public class StoryServiceImpl implements StoryService{
 	@Autowired
 	private StoryRepository repository;
 	
-	@Autowired
-	private StorageService storageService;
+	/*@Autowired
+	private StorageService storageService;*/
 	
 	@Override
-	public Story save(Story story, MultipartFile multipartFile) {
-		String url= null;
+	public Story save(Story story/*, MultipartFile multipartFile*/) {
+		/*String url= null;
 		try {
 			url = storageService.uploadFile(multipartFile);
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		story.setUrlImage(url);
+		story.setUrlImage(url);*/
 		return repository.save(story);
 		}
 	

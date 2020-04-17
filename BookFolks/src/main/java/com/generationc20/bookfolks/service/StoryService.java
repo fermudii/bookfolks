@@ -10,7 +10,7 @@ import com.generationc20.bookfolks.model.Story;
 
 public interface StoryService {
 
-	Story save(Story story,MultipartFile multipartFile);
+	Story save(Story story/*,MultipartFile multipartFile*/);
 	List<Story> getAll();
 	Optional<Story> getById(Integer id);
 	Story update(Integer id, Story story);

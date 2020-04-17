@@ -34,7 +34,7 @@
       </div>
       <div class="modal-body">
 
-       <form th:action="@{/chapter/new(flag=1)}"  enctype="multipart/form-data" method="POST">
+       <form th:action="@{/chapter/new(flag=1)}" method="POST">
 
 
         
@@ -65,7 +65,7 @@
 			
 				<div class="input-contenedor">
 					<i class="fas fa-images icon"></i>
-					<input type="file"  id="file" name="file" placeholder="Upload Image"  >
+					<input type="text"  id="txtUrlImage" name="txtUrlImage" placeholder="Upload Image"  >
 				</div>
 					<div class="btn-group-toggle" data-toggle="buttons" align="right">
   						<label class="btn btn-success btn-sm">

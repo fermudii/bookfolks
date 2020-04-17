@@ -1,4 +1,4 @@
-package com.generationc20.bookfolks.service;
+/*package com.generationc20.bookfolks.service;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -22,7 +22,7 @@ import com.google.cloud.storage.Storage;
 @Service
 public class StorageServiceImpl implements StorageService{
 
-	@Autowired
+	/*@Autowired
 	private Storage storage;
 	
 	@Override
@@ -44,4 +44,4 @@ public class StorageServiceImpl implements StorageService{
 	}
 	
 	
-}
+}*/

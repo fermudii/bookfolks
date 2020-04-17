@@ -17,19 +17,19 @@ public class ChapterServiceImpl implements ChapterService {
 	@Autowired
 	private ChapterRepository repository;
 	
-	@Autowired
-	private StorageService storageService;
+	/*@Autowired
+	private StorageService storageService;*/
 	
 	@Override
-	public Chapter save(Chapter chapter,MultipartFile multipartFile) {
+	public Chapter save(Chapter chapter/*,MultipartFile multipartFile*/) {
 		
-		String url= null;
+		/*String url= null;
 		try {
 			url = storageService.uploadFile(multipartFile);
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		chapter.setUrlImage(url);
+		chapter.setUrlImage(url);*/
 		return repository.save(chapter);
 	}
 	

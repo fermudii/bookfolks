@@ -41,7 +41,7 @@ public class ChapterController {
 			@RequestParam("flag")int flag, Model model, @RequestParam("txtTitle") String title,
 			@RequestParam("txtContent") String content,
 			@RequestParam("txtIdStory") Integer idStory,
-			@RequestParam("file") MultipartFile multipartFile,
+			@RequestParam("txtUrlImage") String urlImage,
 			@RequestParam("txtIdContinuity") Integer idContinuity,
 			RedirectAttributes redirectAttributes) {
 				User userDB = uService.getById(user.getId()).get();
@@ -53,11 +53,12 @@ public class ChapterController {
 				chapter.setContent(content);
 				chapter.setId_user(user.getId());
 				chapter.setId_story(idStory);
+				chapter.setUrlImage(urlImage);
 				chapter.setId_continuity(idContinuity);
 				chapter.setAuthor(userDB.getUsername());
 				chapter.setStoryTitle(storyDB.getTitle());
 
-				service.save(chapter,multipartFile);
+				service.save(chapter/*,multipartFile*/);
 				redirectAttributes.addFlashAttribute("success","Your chapter was created");
 				
 				if(idContinuity == 0) {
@@ -84,7 +85,7 @@ public class ChapterController {
 			@RequestParam("txtTitle") String title,
 			@RequestParam("txtContent") String content,
 			@RequestParam("txtIdStory") Integer idStory,
-			@RequestParam("file") MultipartFile multipartFile,
+			/*@RequestParam("file") MultipartFile multipartFile,*/
 			@RequestParam("txtIdContinuity") Integer idContinuity,
 			RedirectAttributes redirectAttributes) {
 		
@@ -101,7 +102,7 @@ public class ChapterController {
 		chapter.setAuthor(userDB.getUsername());
 		chapter.setStoryTitle(storyDB.getTitle());
 
-		service.save(chapter,multipartFile);
+		service.save(chapter/*,multipartFile*/);
 		redirectAttributes.addFlashAttribute("success","Your chapter was created");
 		
 		if(idContinuity == 0) {

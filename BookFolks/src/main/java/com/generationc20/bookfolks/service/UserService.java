@@ -12,6 +12,6 @@ public interface UserService {
 	User save(User user);
 	List<User> getAll();
 	Optional<User> getById(Integer id);
-	User update(Integer id, User user, MultipartFile multipartFile);
+	User update(Integer id, User user/*, MultipartFile multipartFile*/);
 	void remove(Integer id);
 }

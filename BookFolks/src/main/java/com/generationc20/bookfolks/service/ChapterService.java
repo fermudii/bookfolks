@@ -9,7 +9,7 @@ import com.generationc20.bookfolks.model.Chapter;
 
 public interface ChapterService {
 
-	Chapter save(Chapter chapter,MultipartFile multipartFile);
+	Chapter save(Chapter chapter/*,MultipartFile multipartFile*/);
 	List<Chapter> getAll();
 	Optional<Chapter> getById(Integer id);
 	Chapter update(Integer id, Chapter chapter);

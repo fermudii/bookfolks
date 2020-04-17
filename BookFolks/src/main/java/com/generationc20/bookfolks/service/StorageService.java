@@ -1,4 +1,4 @@
-package com.generationc20.bookfolks.service;
+/*package com.generationc20.bookfolks.service;
 
 import java.io.IOException;
 
@@ -8,3 +8,4 @@ public interface StorageService {
 
 	String uploadFile(MultipartFile multipartFile) throws IOException; 
 }
+*/

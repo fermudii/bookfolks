@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository repository;
 	
-	@Autowired
-	private StorageService storageService;
+	/*@Autowired
+	private StorageService storageService;*/
 	
 	@Override
 	public User save(User user) {
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public User update(Integer id, User user, MultipartFile multipartFile) {
+	public User update(Integer id, User user/*, MultipartFile multipartFile*/) {
 		User userDB = getById(id).get();
 		userDB.setName(user.getName());
 		userDB.setLastName(user.getLastName());
@@ -47,13 +47,13 @@ public class UserServiceImpl implements UserService{
 		userDB.setDescription(user.getDescription());
 		userDB.setEmail(user.getEmail());
 		
-		String url= null;
+		/*String url= null;
 		try {
 			url = storageService.uploadFile(multipartFile);
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		userDB.setUrlImage(url);
+		userDB.setUrlImage(url);*/
 		return repository.save(userDB);
 		
 	}
