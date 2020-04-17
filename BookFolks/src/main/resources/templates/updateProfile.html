@@ -8,7 +8,7 @@
 	<div>
 		<h1>Edit Profile</h1>
 	</div>
-	<form action="/user/edit" method="POST">
+	<form action="/user/edit"  enctype="multipart/form-data" method="POST">
 		<div>
 			<label for="txtName">Name</label>
 			<input type="text" id="txtName" name="txtName" th:placeholder="${user.name}">
@@ -34,8 +34,8 @@
 			<input type="text" id="txtEmail" name="txtEmail" th:placeholder="${user.email}">
 		</div>
 		<div>
-			<label for="txtUrlImage">Profile Image</label>
-			<input type="text" id="txtUrlImage" name="txtUrlImage"><button>Search</button>
+			<label for="file">Select Image</label>
+			<input type="file" id="file" name="file">
 		</div>
 		<input type="submit" value="Accept">
 	</form>

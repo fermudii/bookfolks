@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.generationc20.bookfolks.model.Chapter;
@@ -51,7 +52,7 @@ public class StoryController {
 	public String createStory(@SessionAttribute("user")User user,
 			@RequestParam("txtTitle") String title,
 			@RequestParam("txtSynopsis") String synopsis,
-			@RequestParam("txtUrlImage") String urlImage,
+			@RequestParam("file") MultipartFile multipartFile,
 			@RequestParam("txtGenre") int genre, RedirectAttributes redirectAttributes) {
 		
 		User userDB = uService.getById(user.getId()).get();
@@ -59,12 +60,11 @@ public class StoryController {
 		Story story = new Story();
 		story.setTitle(title);
 		story.setSynopsis(synopsis);
-		story.setUrlImage(urlImage);
 		story.setIdGenre(genre);
 		story.setIdUser(user.getId());
 		story.setAuthor(userDB.getUsername());
 		
-		service.save(story);
+		service.save(story,multipartFile);
 		redirectAttributes.addFlashAttribute("success","Your story was created");
 	return "redirect:/story/all";
 	}
