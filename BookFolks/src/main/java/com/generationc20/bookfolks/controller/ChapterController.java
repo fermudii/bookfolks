@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.generationc20.bookfolks.model.Chapter;
@@ -87,7 +88,7 @@ public class ChapterController {
 			@RequestParam("txtTitle") String title,
 			@RequestParam("txtContent") String content,
 			@RequestParam("txtIdStory") Integer idStory,
-			@RequestParam("txtUrlImage") String urlImage,
+			@RequestParam("file") MultipartFile multipartFile,
 			@RequestParam("txtIdContinuity") Integer idContinuity,
 			RedirectAttributes redirectAttributes) {
 		
@@ -99,13 +100,12 @@ public class ChapterController {
 		chapter.setTitle(title);
 		chapter.setContent(content);
 		chapter.setId_user(user.getId());
-		chapter.setUrlImage(urlImage);
 		chapter.setId_story(idStory);
 		chapter.setId_continuity(idContinuity);
 		chapter.setAuthor(userDB.getUsername());
 		chapter.setStoryTitle(storyDB.getTitle());
 
-		service.save(chapter);
+		service.save(chapter,multipartFile);
 		redirectAttributes.addFlashAttribute("success","Your chapter was created");
 		
 		if(idContinuity == 0) {

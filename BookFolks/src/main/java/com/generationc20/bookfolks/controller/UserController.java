@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.generationc20.bookfolks.model.Story;
@@ -36,14 +37,19 @@ public class UserController {
 	@GetMapping("/main")
 	public String loadMainPageView(@SessionAttribute("user") User user,Model model) {
 		
-		User userSession = service.getById(user.getId()).get();
-		List<Story> allStories = sService.getAll();
-		Collections.reverse(allStories);
+		if(user.getId() != null) {
+			User userSession = service.getById(user.getId()).get();
+			List<Story> allStories = sService.getAll();
+			Collections.reverse(allStories);
+			
+			
+			model.addAttribute("user",userSession);
+			model.addAttribute("allStories", allStories );
+			return "main";
+		}else {
+			return"redirect:/user/loginForm";
+		}
 		
-		
-		model.addAttribute("user",userSession);
-		model.addAttribute("allStories", allStories );
-		return "main";
 	}
 	
 	@GetMapping("/aboutUs")
@@ -116,7 +122,7 @@ public class UserController {
 			@RequestParam("txtGender") String gender,
 			@RequestParam("txtDescription") String description,
 			@RequestParam("txtEmail") String email,
-			@RequestParam("txtUrlImage") String urlImage,
+			@RequestParam("file") MultipartFile multipartFile,
 			RedirectAttributes redirectAttributes) {
 		
 		//Model
@@ -152,13 +158,9 @@ public class UserController {
 		}else {
 			userEdited.setEmail(userDB.getEmail());
 		}
-		if(urlImage != null && urlImage.length() > 0) {
-			userEdited.setUrlImage(urlImage);
-		}else {
-			userEdited.setUrlImage(userDB.getUrlImage());
-		}
 		
-		service.update(user.getId(),userEdited);
+		
+		service.update(user.getId(),userEdited,multipartFile);
 		redirectAttributes.addFlashAttribute("success","Your profile was updated");
 		return "redirect:/user/profile";
 	}
